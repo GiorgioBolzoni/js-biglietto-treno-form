@@ -18,16 +18,106 @@
 
 const button = document.querySelector('#genera')
 console.log(button)
+const resetBtn = document.querySelector('#reset')
+console.log(resetBtn)
+
+
+
+// resetBtn.addEventListener('click', function(){
+//     const nome = document.getElementById('nome').value = '';
+//     const km = parseInt(document.getElementById('km').value = '');
+//     const age = document.getElementById('age').value = '';
+//     //controllare che l'utente abbia inserito i dati
+//     if(nome === '' || km ==='' || age === ''){
+//         alert('Devi compilare tutti i campi')
+//     } else{
+//         // console.log(nome)
+//         // console.log(km)
+//         // console.log(age)
+//         const offerta = document.getElementById('offerta');
+//         const carrozza = document.getElementById('carrozza');
+//         const CP = document.getElementById('CP');
+//         const price = document.getElementById('price');
+//         if (age == 'minorenne') {
+//             prezzo = (prezzo - (prezzo* 0.20));
+//             console.log('prezzo €', prezzo.toPrecision(3));
+//             nome.innerHTML = nome;
+//             offerta.innerHTML = `Biglietto Under 18`;
+//             carrozza.innerHTML = `5`;
+//             CP.innerHTML = `92911`;
+//             price.innerHTML = prezzo;
+//         } else if (age == 'over65'){
+//             prezzo = (prezzo - (prezzo* 0.40));
+//             console.log('prezzo €', prezzo.toPrecision(3));
+//             nome.innerHTML = nome;
+//             offerta.innerHTML = `Biglietto Over 65`;
+//             carrozza.innerHTML = `5`;
+//             CP.innerHTML = `92911`;
+//             price.innerHTML = prezzo;
+//         } else{
+//             prezzo = prezzo;
+//             console.log('prezzo €', prezzo.toPrecision(3));
+//             nome.innerHTML = nome;
+//             offerta.innerHTML = `Biglietto Standard`;
+//             carrozza.innerHTML = `5`;
+//             CP.innerHTML = `92911`;
+//             price.innerHTML = prezzo;
+//         }
+        
+
+//     }
+// });
+
 
 button.addEventListener('click', function(){
     const nome = document.getElementById('nome').value;
+    const km =parseInt(document.getElementById('km').value);
     const age = document.getElementById('age').value;
-    const fascia = document.getElementById('fascia').value;
-    //controllare che l'utente abbia inserito i dati
-    if(nome === '' || age ==='' || fascia === ''){
-        alert('Devi compilare tutti i campi')
+    console.log(km)
+    if (isNaN(km)){
+        window.location.reload();
     }
-    console.log(nome)
-    console.log(age)
-    console.log(fascia)
+    let prezzo = (0.21 * km);
+    console.log(prezzo)
+    //controllare che l'utente abbia inserito i dati
+    if(nome === '' || km ==='' || age === ''){
+        alert('Devi compilare tutti i campi')
+    } else{
+        console.log(nome)
+        console.log(km)
+        console.log(age)
+        const offerta = document.getElementById('offerta');
+        const carrozza = document.getElementById('carrozza');
+        const CP = document.getElementById('CP');
+        const price = document.getElementById('price');
+        if (age === 'minorenne') {
+            prezzo = (prezzo - (prezzo* 0.20));
+            console.log('prezzo €', prezzo.toPrecision(3));
+            nome.innerHTML = `<div>${nome}€</div>`;
+            offerta.innerHTML = `Biglietto Under 18`;
+            carrozza.innerHTML = `5`;
+            CP.innerHTML = `92911`;
+            price.innerHTML = `<div>${prezzo , prezzo.toPrecision(3)}€</div>`;
+        } else if (age === 'over65'){
+            prezzo = (prezzo - (prezzo* 0.40));
+            console.log('prezzo €', prezzo.toPrecision(3));
+            nome.innerHTML = `<div>${nome}</div>`;
+            offerta.innerHTML = `Biglietto Over 65`;
+            carrozza.innerHTML = `7`;
+            CP.innerHTML = `92911`;
+            price.innerHTML = `<div>${prezzo , prezzo.toPrecision(3)}€</div>`;
+        } else{
+            prezzo = prezzo;
+            console.log('prezzo €', prezzo.toPrecision(3));
+            nome.innerHTML = `<div>${nome}</div>`;
+            offerta.innerHTML = `Biglietto Standard`;
+            carrozza.innerHTML = `12`;
+            CP.innerHTML = `92911`;
+            price.innerHTML = `<div>${prezzo , prezzo.toPrecision(3)}€</div>`;
+        }
+        
+
+    }
+    
+
 } );
