@@ -16,4 +16,18 @@
 // Nota:
 // Se non vi sentite particolarmente creativi, questa potrebbe essere un’implementazione da seguire per il secondo milestone. Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra.
 
+const button = document.querySelector('#genera')
+console.log(button)
 
+button.addEventListener('click', function(){
+    const nome = document.getElementById('nome').value;
+    const age = document.getElementById('age').value;
+    const fascia = document.getElementById('fascia').value;
+    //controllare che l'utente abbia inserito i dati
+    if(nome === '' || age ==='' || fascia === ''){
+        alert('Devi compilare tutti i campi')
+    }
+    console.log(nome)
+    console.log(age)
+    console.log(fascia)
+} );
